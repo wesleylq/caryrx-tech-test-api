@@ -1,0 +1,47 @@
+type companyPayload {
+  id: ID!
+  name: String!
+}
+
+type typePayload {
+  type: String!
+}
+
+type medicine {
+  id: ID!
+  name: String!
+  substance: String!
+  presentation: String!
+  type: String!
+  maxPrice: Float!
+}
+
+type expensiveMedicinesPayload {
+  id: ID!
+  label: String!
+  value: Float!
+}
+
+type medicinePayload {
+  count: Int!
+  medicines: [medicine]
+}
+
+type countPayload {
+  type: String!
+  count: Int!
+}
+
+type avgPayload {
+  type: String!
+  avg: Float!
+}
+
+type Query {
+  getCompanies: [companyPayload]!
+  getTypes: [typePayload]!
+  getMedicines(companyId: String, type: String, from: Int!, size: Int!): medicinePayload
+  countMedicinesByType: [countPayload]!
+  getExpensiveMedicines: [expensiveMedicinesPayload]!
+  averagePriceByType: [avgPayload]!
+}
